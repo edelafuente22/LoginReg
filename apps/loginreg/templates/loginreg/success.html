@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>You're signed in</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- <h1>Success! You are logged in.</h1> -->
+        {% for user in users %} 
+            <h1>Hi, {{user.first_name}}! You are logged in.</h1>
+            <h3>Name: {{user.first_name}} {{user.last_name}}</h3>
+            <h3>Email: {{user.email}}</h3>
+        {% endfor %}   
+        <br>
+        <form action='/logout' method='POST'>
+            {% csrf_token %}
+            <input type="submit" value="Log Out">
+        </form>
+    </body>
+</html>

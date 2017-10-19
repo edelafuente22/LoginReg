@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login | Register</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Login</h1>
+        <form action='/login' method='POST'>
+            {% csrf_token %}
+            <label for="user_email">Email Address: <input type="email" name="email" id="email"></label><br><br>
+            <label for="user_password">Password: <input type="password" name="password" id="password"></label><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <br><br>
+        <h1>Not registered? Sign up!</h1>
+        <form action='/register' method='POST'>
+            {% csrf_token %}
+            <label for="first_name">First Name: <input type="text" name="first_name" id="first_name"></label><br><br>
+            <label for="last_name">Last Name: <input type="text" name="last_name" id="last_name"></label><br><br>
+            <label for="email">Email Address: <input type="email" name="email" id="email"></label><br><br>
+            <label for="password">Password: <input type="password" name="password" id="password"></label><br><br>
+            <label for="confirm">Confirm Password: <input type="password" name="confirm" id="confirm"></label><br><br>
+            <input type="submit" value="Submit">
+        </form>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:red">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+    </body>
+</html>
